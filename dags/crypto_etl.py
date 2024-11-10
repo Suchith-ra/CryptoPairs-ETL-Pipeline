@@ -62,8 +62,6 @@ with DAG(
                     'ask_size': float(ticker_info['askQty']) if ticker_info['askQty'] else None,
                     'bid_price': float(ticker_info['bidPrice']) if ticker_info['bidPrice'] else None,
                     'bid_size': float(ticker_info['bidQty']) if ticker_info['bidQty'] else None,
-                    'time_coinapi': pd.to_datetime('now').isoformat(),
-                    'time_exchange': pd.to_datetime('now').isoformat(),
                     'ts': pd.to_datetime('now').isoformat()
                 }
 
@@ -86,8 +84,8 @@ with DAG(
                 'ask_size': entry['ask_size'],
                 'bid_price': entry['bid_price'],
                 'bid_size': entry['bid_size'],
-                'time_coinapi': entry['time_coinapi'],
-                'time_exchange': entry['time_exchange'],
+                'time_coinapi': entry['ts'],
+                'time_exchange': entry['ts'],
                 'ts': entry['ts']
             }
             transformed_data.append(transformed_entry)
